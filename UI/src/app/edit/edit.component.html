@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-md-5 mb-6">
+      <br />
+      <div class="d-flex justify-content-center align-items-center">
+        <h2>EDIT EMPLOYEE</h2>
+      </div>
+      <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()"
+            style="box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); border: 1px solid #ccc; border-radius: 5px; padding: 20px;">
+
+        <div class="form-group">
+          <label for="EName">Name</label>
+          <input type="text" id="EName" formControlName="EName" class="form-control" [ngClass]="(urf['EName'].touched && urf['EName'].invalid)?'form-control is-invalid':((urf['EName'].touched && urf['EName'].valid)?'form-control is-valid':'form-control')" required>
+        </div>
+        <br />
+
+        <div class="form-group">
+          <label for="Gender">Gender</label>
+          <input type="text" id="Gender" formControlName="Gender" class="form-control" [ngClass]="(urf['Gender'].touched && urf['Gender'].invalid)?'form-control is-invalid':((urf['Gender'].touched && urf['Gender'].valid)?'form-control is-valid':'form-control')" required>
+        </div>
+        <br />
+
+        <div class="form-group">
+          <label for="Email">Email</label>
+          <input type="email" id="Email" formControlName="Email" class="form-control" [ngClass]="(urf['Email'].touched && urf['Email'].invalid)?'form-control is-invalid':((urf['Email'].touched && urf['Email'].valid)?'form-control is-valid':'form-control')" email>
+        </div>
+        <br />
+
+        <div class="form-group">
+          <label for="DOB">Date of Birth</label>
+          <input type="date" id="DOB" formControlName="DOB" class="form-control" [ngClass]="(urf['DOB'].touched && urf['DOB'].invalid)?'form-control is-invalid':((urf['DOB'].touched && urf['DOB'].valid)?'form-control is-valid':'form-control')" required>
+        </div>
+        <br />
+
+        <div class="form-group">
+          <label for="Address">Address</label>
+          <input type="text" id="Address" formControlName="Address" class="form-control" [ngClass]="(urf['Address'].touched && urf['Address'].invalid)?'form-control is-invalid':((urf['Address'].touched && urf['Address'].valid)?'form-control is-valid':'form-control')" required>
+        </div>
+        <br />
+
+        <button type="submit" matRipple class="btn btn-success me-3  rounded-pill example-ripple-container mat-elevation-z4" [disabled]="employeeForm.invalid">Update</button>
+        <button [routerLink]="['/employees']" matRipple class="btn btn-primary  rounded-pill example-ripple-container mat-elevation-z4">Back</button>
+        <br />
+      </form>
+    </div>
+  </div>
+  <br />
+</div>
+

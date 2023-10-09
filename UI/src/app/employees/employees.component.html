@@ -1,0 +1,56 @@
+<div *ngIf="!employees || employees.length === 0" class="container-lg d-flex justify-content-center mt-5">
+  
+  <h1>No employees......</h1>
+</div>
+  <div class="container-lg" *ngIf="employees && employees.length > 0">
+    <br />
+    <h2>EMPLOYEES LIST</h2>
+    <br />
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Email</th>
+            <th>DOB</th>
+            <th>Address</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of employees | paginate: { itemsPerPage: pageSize, currentPage: currentPage }">
+            <td>{{ employee.eid }}</td>
+            <td>{{ employee.eName }}</td>
+            <td>{{ employee.gender }}</td>
+            <td>{{ employee.email }}</td>
+            <td>{{ employee.dob | date }}</td>
+            <td>{{ employee.address }}</td>
+            <td>
+              <div class="btn-group" role="group">
+                <button [routerLink]="['/edit', employee.eid]" matRipple class="btn btn-primary btn-sm me-4 rounded-pill  example-ripple-container mat-elevation-z4">Edit</button>
+                <button [routerLink]="['/delete', employee.eid]" matRipple class="btn btn-danger btn-sm rounded-pill example-ripple-container mat-elevation-z4">Delete</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="row">
+        <div class="pagination col-md-6">
+          <pagination-controls class="custom-pagination  example-ripple-container mat-elevation-z4" matRipple (pageChange)="currentPage = $event"></pagination-controls>
+        </div>
+        <div class="col-md-3 mt-2" style="text-align: right;">
+          <h6>Items Per Page: </h6>
+        </div>
+        <div class="col-md-3 text-dark">
+          <select class="form-select" [(ngModel)]="pageSize">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
